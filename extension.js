@@ -51,16 +51,12 @@ if (SHELL_MINOR > 30) {
   );
 }
 
-function get_current_path() {
-  return "/sys/class/power_supply/BAT0/current_now";
+function get_energy_now() {
+  return "/sys/class/power_supply/BAT1/energy_now";
 }
 
-function get_voltage_path() {
-  return "/sys/class/power_supply/BAT0/voltage_now";
-}
-
-function get_current() {
-  var filepath = get_current_path();
+function get_energy() {
+  var filepath = get_energy_now();
   if(GLib.file_test (filepath, GLib.FileTest.EXISTS)) {
     return parseInt(GLib.file_get_contents(filepath)[1]);
   }
@@ -68,23 +64,13 @@ function get_current() {
   return null;
 }
 
-function get_voltage() {
-  var filepath = get_voltage_path();
-  if(GLib.file_test (filepath, GLib.FileTest.EXISTS)) {
-    return parseInt(GLib.file_get_contents(filepath)[1]);
-  }
-}
-
 function get_data() {
   var power_str = "N/A";
-  var current = get_current();
-  var voltage = get_voltage();
+  var energy = get_energy();
 
-  if (current && voltage) {
-    var raw_power = (current * voltage) / 1000000000000;
+  if (energy) {
+    var power =  energy / 10000000;
   
-    var power = (Math.round(raw_power * 100) / 100).toFixed(2);
-
     power_str = `${String(power)} W`;
   }
   

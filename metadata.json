@@ -1,10 +1,10 @@
 {
-  "name": "Power Consumption",
+  "name": "Gnome Power Consumption",
   "description": "Show power consumption in a laptop",
-  "uuid": "power_consumption@f3rd3f",
+  "uuid": "gnome_power_consumption@f3rd3f",
   "shell-version": [
-    "3.34"
+    "3.36"
   ],
   "version": 0.1,
-  "url": "https://github.com/ferdef/power_consumption"
+  "url": "https://github.com/michaeldigiacomi/gnome_power_consumption"
 }

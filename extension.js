@@ -20,6 +20,8 @@ const Mainloop = imports.mainloop;
 const Config = imports.misc.config;
 const SHELL_MINOR = parseInt(Config.PACKAGE_VERSION.split('.')[1]);
 
+const Util = imports.misc.util;
+
 var label = null;
 var indicator = null;
 
